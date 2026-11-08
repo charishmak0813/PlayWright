@@ -16,15 +16,5 @@ test("sign up", async ({ page }) => {
   console.log("Title::", await signupPage.title());
 
   // Use locators against signupPage, not page.
-  console.log(
-    await signupPage.locator("input").evaluateAll((inputs) =>
-      inputs.map((input) => ({
-        name: input.name,
-        type: input.type,
-        placeholder: input.placeholder,
-        testId: input.getAttribute("data-testid"),
-        ariaLabel: input.getAttribute("aria-label"),
-      })),
-    ),
-  );
+  await signupPage.locator("#name").fill("John Doe");
 });
