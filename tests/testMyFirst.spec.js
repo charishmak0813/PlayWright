@@ -18,4 +18,5 @@ test("sign up", async ({ page }) => {
   // Use locators against signupPage, not page.
   await signupPage.locator("#name").fill("John Doe");
   await signupPage.locator("#email").fill("test@t.com");
+  await signupPage.getByTestId("allow-marketing-emails").check();
 });
