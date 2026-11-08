@@ -13,7 +13,7 @@ test("sign up", async ({ page }) => {
   );
 
   console.log("URL:", signupPage.url());
-  console.log("Title:", await signupPage.title());
+  console.log("Title::", await signupPage.title());
 
   // Use locators against signupPage, not page.
   console.log(
