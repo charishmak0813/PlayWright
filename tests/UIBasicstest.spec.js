@@ -1,10 +1,26 @@
 const { test, expect } = require("@playwright/test");
+// Browser and Page fixtures are available by default in Playwright test. We can use them without creating a new context and page. But if we want to create a new context and page we can use browser fixture to create a new context and page.
+
+// test on date 11/06/2026
+test("To set the browser context with plugins and cookies", async ({
+  browser,
+}) => {
+  const context = await browser.newContext;
+  const page = await context.newPage();
+  await page.goto("https://rahulshettyacademy.com/loginpagePractise");
+});
+// test on date 11/06/2026
+test("Assuming the browser context is not required and it is new and opening the page", async ({
+  page,
+}) => {
+  await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+});
 
 test("Browser context playwight test", async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
   const userName = page.locator("#username");
-  const password = page.locator("[type ='password']");
+  const password = page.locator("[type ='password']"); // attribute selector  <input type="password" class="form-control" id="password" placeholder="Password">
   const signInBtn = page.locator("#signInBtn");
   const cardTitles = page.locator(".card-body a");
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -18,6 +34,7 @@ test("Browser context playwight test", async ({ browser }) => {
   await password.fill("learning");
   await signInBtn.click();
   console.log(await cardTitles.first().textContent());
+  console.log(await cardTitles.nth(1).textContent());
   const allTitles = await cardTitles.allTextContents();
   console.log(allTitles);
 });
