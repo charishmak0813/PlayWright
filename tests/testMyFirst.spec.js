@@ -13,10 +13,10 @@ test("sign up", async ({ page }) => {
   );
 
   console.log("URL:", signupPage.url());
-  console.log("Title:", await signupPage.title());
+  console.log("Title::", await signupPage.title());
 
   // Use locators against signupPage, not page.
-  await signupPage.locator("#name").fill("John");
+  await signupPage.locator("#name").fill("John Smith");
   await signupPage.locator("#email").fill("test@t.com");
   await signupPage.getByTestId("allow-marketing-emails").check();
 });
